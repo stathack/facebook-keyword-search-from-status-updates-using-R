@@ -36,11 +36,11 @@ FBookkeyword<-function(x){
      
             #for(j in 1:fblikecount[i]){ fblikename[i] <- ifelse(is.null(fbdata[[i]]$likes$data[[j]][[1]]),"0",fbdata[[i]]$likes$data[[j]][[1]]) }
         }
-        #build data frame in the same name as the keyword plus fbtable at the beginning
+        #build all above variables into one data frame
         y<-as.data.frame(cbind(fbid, facebookers, fbmessage, fbpic, fblink, fbname, fbcaption, fbdescription, fbicon, fbtype, fbcreated, fbupdated, fblikecount, keyword=x))
     #adjust time zone to USA eastern time zone
-    y$fbupdated<-format(as.POSIXct(strptime(as.character(debate$fbupdated), "%Y-%m-%dT%H:%M:%S+0000"), tz="GMT"), tz="America/New_York",usetz=TRUE)
-    y$fbcreated<-format(as.POSIXct(strptime(as.character(debate$fbcreated), "%Y-%m-%dT%H:%M:%S+0000"), tz="GMT"), tz="America/New_York",usetz=TRUE)
+    y$fbupdated<-format(as.POSIXct(strptime(as.character(y$fbupdated), "%Y-%m-%dT%H:%M:%S+0000"), tz="GMT"), tz="America/New_York",usetz=TRUE)
+    y$fbcreated<-format(as.POSIXct(strptime(as.character(y$fbcreated), "%Y-%m-%dT%H:%M:%S+0000"), tz="GMT"), tz="America/New_York",usetz=TRUE)
     return(y)
 }
   
